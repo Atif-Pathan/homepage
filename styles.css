@@ -99,23 +99,30 @@ header {
     align-items: center;
 }
 
-main {
+main, footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 2rem 2rem 2rem;
     gap: 1rem;
 }
 
+main {
+    margin: 0 2rem 2rem 2rem;
+}
+
+footer {
+    margin: 0 2rem;
+}
+
 header, main, footer {
-    max-width: 800px;
+    max-width: 750px;
 }
 
 .article-container {
     display: grid;
     gap: 2rem;
     justify-items: center;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: 1fr;
 }
 
 .intro {
@@ -151,29 +158,30 @@ header, main, footer {
 
 .about-me {
     text-align: center;
+    padding-bottom: 1rem;
 }
 
 .links {
-    padding-top: 1rem;
     display: flex;
+    align-items: center;
     gap: 1rem;
 }
 
 i {
-    transition: scale 0.1s ease-in-out;
+    transition: scale 0.1s ease;
     cursor: pointer;
 }
 
 /* only add hover for desktop screens (add in media q later) */
 i:hover {
-    scale: 1.2;
+    scale: 1.15;
 }
 
 i:active {
-    scale: 0.9;
+    scale: 0.95;
 }
 
-u {
+u, a {
     color: teal;
 }
 
@@ -182,30 +190,55 @@ u {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    border-radius: 10px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    border-radius: 0.5rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.2) 0px 8px 16px -8px;
     overflow: hidden;
 }
 
 .card-row-1 {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 1rem;
-    padding: 0 1rem;
+    padding: 0.5rem 1rem 0 1rem;
 }
 
 .card-title {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: bold;
 }
 
-.card-links {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-
+.card-content {
+    font-size: 0.8rem;
+    padding: 0 1rem 1rem 1rem;
 }
 
-.card-content {
-    padding: 0 1rem 1rem 1rem;
+#contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.1rem;
+}
+
+.call-action {
+    text-align: center;
+    max-width: 400px;
+}
+
+address {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.dummy-address {
+    padding-top: 0.8rem;
+    font-size: 0.9rem;
+    line-height: 1.1;
+    font-weight: 500;
+}
+
+.my-image {
+    min-width: 100%;
 }
