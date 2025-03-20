@@ -93,6 +93,17 @@ li {
   padding-inline: 0;
 }
 
+::selection {
+    background: rgb(0, 164, 164); /* The highlight background color */
+    color: white;        /* The text color when highlighted */
+}
+  
+/* For Firefox */
+::-moz-selection {
+    background: rgb(0, 164, 164);;
+    color: white;
+}
+
 header {
     display: flex;
     flex-direction: column;
@@ -155,8 +166,7 @@ header, main, footer {
     bottom: 10%;
     left: 2%;
     line-height: 0.8;
-    color: white; /* Set text color to white */
-    mix-blend-mode: difference; /* This creates the inversion effect */
+    color: turquoise; /* Set text color to white */
     text-align: center;
 }
 
@@ -164,6 +174,10 @@ header, main, footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.about-me-wrapper > nav {
+    margin-top: 0.5rem;
 }
 
 .section-heading {
@@ -174,6 +188,7 @@ header, main, footer {
 
 .about-me {
     text-align: center;
+    padding-bottom: 1rem;
 }
 
 .links {
@@ -189,7 +204,8 @@ i {
 
 /* only add hover for desktop screens (add in media q later) */
 i:hover {
-    scale: 1.15;
+    scale: 1.2;
+    color: rgb(0, 164, 164);
 }
 
 i:active {
@@ -197,7 +213,7 @@ i:active {
 }
 
 u, a {
-    color: teal;
+    color: rgb(0, 164, 164);
 }
 
 .project-card {
@@ -232,19 +248,20 @@ u, a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.1rem;
+    gap: 1rem;
 }
 
 .contact-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.1rem;
+    gap: 0.5rem;
+    flex: 1;
 }
 
 .call-action {
     text-align: center;
-    max-width: 400px;
+    /* max-width: 300px; */
 }
 
 address {
@@ -262,8 +279,13 @@ address {
 }
 
 .my-image {
-    min-width: 100%;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    flex: 2;
+    /* min-width: 100%; */
+}
+
+.my-actual-image {
+    box-shadow: rgba(17, 17, 26, 0.15) 0px 4px 16px, rgba(17, 17, 26, 0.15) 0px 8px 24px, rgba(17, 17, 26, 0.15) 0px 16px 56px;
+    filter: grayscale(100%);
 }
 
 .copy {
@@ -299,7 +321,7 @@ address {
         shape-outside: polygon(0 0, 100% 0, 100% 100%, 0 100%);
         shape-margin: 1rem;
     }
-    .header-wrapper + nav {
+    .about-me-wrapper > nav {
         display: none;
     }
     .headshot {
@@ -309,9 +331,10 @@ address {
     .my-name {
         bottom: initial;
         left: initial;
+        mix-blend-mode: initial;
+        color: rgb(0, 164, 164);
         top: 8%;
         right: -95%;
-        font-family: "Fuggles", cursive;
         width: fit-content;
         font-weight: bold;
         font-size: 5.5rem;
@@ -333,17 +356,17 @@ address {
         text-wrap: wrap;
         line-height: 1.5;
         font-size: 1.1rem;
+        padding-bottom: 0;
     }
     .my-image {
         min-width: initial;
-        width: 40%;
-        max-width: 300px;
+        max-width: 360px;
     }
     #contact {
         width: 100%;
         flex-direction: row;
         justify-content: center;
-        padding: 2rem;
+        padding: 1.5rem;
         background-color: white;
         border-radius: 0.5rem;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
@@ -380,9 +403,115 @@ address {
     header, main, footer {
         max-width: 90%; /* Wider container for desktop */
     }
-    
+    .about-me-wrapper > nav {
+        display: flex;
+        position: absolute;
+        right: 2rem;
+        bottom: 2rem
+    }
+    .header-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0;
+    }
     .article-container {
         grid-template-columns: repeat(3, 1fr); /* Three columns for desktop */
+    }
+    .headshot-wrapper {
+        position: relative;
+        z-index: 1;
+        min-width: 380px;
+        margin-right: 0;
+        margin-bottom: 0;
+        shape-outside: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    .headshot {
+        max-width: 380px;
+        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+        z-index: 2;
+    }
+    .my-name {
+        bottom: 10%;
+        left: 15%;
+        top: initial;
+        right: initial;
+        width: fit-content;
+        font-weight: bold;
+        font-size: 6rem;
+        color: turquoise; /* Set text color to white */
+    }
+    .about-me-wrapper {
+        position: relative;
+        display: block;
+        align-self: center;
+        padding: 2.5rem 2.5rem 5rem 2.5rem;
+        margin: 0;
+        background-color: white;
+        border-top-right-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    }
+    .about-me {
+        margin-top: 0.5rem;
+        text-align: justify;
+        text-wrap: wrap;
+        line-height: 1.5;
+        font-size: 1.05rem;
+        padding-bottom: 0;
+    }
+    #contact {
+        gap: 1.2rem;
+    }
+    .my-image {
+        max-width: 550px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .about-me-wrapper > nav {
+        right: 2.7rem;
+        bottom: 2rem
+    }
+    .about-me {
+        font-size: 1.25rem;
+    }
+    .my-name {
+        font-size: 6.3rem;
+    }
+    .card-title {
+        font-size: 1.5rem;
+    }
+    .card-content, .call-action, address, .dummy-address {
+        font-size: 1.3rem;
+    }
+    .contact-wrapper {
+        gap: 1.5rem;
+    }
+    .links {
+        scale: 1.3;
+        padding-right: 0.5rem;
+    }
+    #contact {
+        gap: 2rem;
+        padding: 2rem;
+    }
+    .my-image {
+        max-width: 650px;
+    }
+    .section-heading {
+        font-size: 2.8rem;
+    }
+    .card-row-1 {
+        padding: 1rem 1.5rem 0 1.5rem;
+    }
+    .card-content {
+        padding: 0 1.5rem 1.5rem 1.5rem;
+    }
+    .project-card {
+        gap: 1rem;
     }
 }
 
@@ -391,9 +520,55 @@ address {
     header, main, footer {
         max-width: 1400px; /* Much wider container for large screens */
     }
-    
+
+    .about-me {
+        margin-top: 0.5rem;
+        text-align: justify;
+        text-wrap: wrap;
+        line-height: 1.5;
+        font-size: 1.4rem;
+    }
+    .card-title {
+        font-size: 1.6rem;
+    }
+    .card-content, .call-action, address, .dummy-address {
+        font-size: 1.5rem;
+    }
+    .contact-wrapper {
+        gap: 1.6rem;
+    }
+    .links {
+        scale: 1.4;
+        padding-right: 0.5rem;
+    }
+    .about-me-wrapper > nav {
+        right: 3.5rem;
+        bottom: 2.5rem
+    }
+    .about-me-wrapper {
+        padding: 3rem 3rem 6rem 3rem;
+    }
+    #contact {
+        gap: 2.5rem;
+        padding: 3rem;
+    }
     /* Optional: you could go to 4 columns for very large screens */
     .article-container {
         gap: 2.5rem; /* Slightly larger gap for big screens */
+    }
+    .my-image {
+        max-width: 750px;
+    }
+    .section-heading {
+        font-size: 3.2rem;
+    }
+    .card-row-1 {
+        padding: 1rem 1.5rem 0 1.5rem;
+    }
+    .card-content {
+        padding: 0 1.5rem 1.5rem 1.5rem;
+    }
+    .project-card {
+        gap: 1rem;
     }
 }
