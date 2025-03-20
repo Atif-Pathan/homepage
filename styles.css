@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Fuggles&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 /*
     1. Use a more-intuitive box-sizing model.
 */
@@ -30,7 +30,8 @@ body {
   -webkit-font-smoothing: antialiased;
   /* background: rgb(208, 208, 208); */
   font-family: "Inter", sans-serif;
-  
+  min-width: 200px;
+  overflow-y: auto;
   background-color: rgb(245, 245, 234);
   display: flex;
   flex-direction: column;
@@ -97,6 +98,7 @@ header {
     flex-direction: column;
     margin: 2rem;
     align-items: center;
+    gap: 1rem;
 }
 
 main, footer {
@@ -115,39 +117,53 @@ footer {
 }
 
 header, main, footer {
-    max-width: 750px;
+    max-width: 80%;
 }
 
 .article-container {
     display: grid;
     gap: 2rem;
     justify-items: center;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; 
 }
 
-.intro {
+.header-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    position: relative;
+}
+
+.headshot-wrapper {
     position: relative;
     margin-bottom: 1rem;
 }
 
 .headshot {
     border: 2px solid black;
+    max-width: 300px;
+    width: 100%;
 }
 
 .my-name {
-    width: 100%;
-    font-family: "Anton", sans-serif;
-    font-size: 3.5rem;
     position: absolute;
-    bottom: 5%;
-    line-height: 1.1;
+    width: 100%;
+    /* font-family: "Anton", sans-serif; */
+    font-family: "Fuggles", cursive;
+    font-size: 4.5rem;
+    font-weight: bold;
+    bottom: 10%;
+    left: 2%;
+    line-height: 0.8;
     color: white; /* Set text color to white */
     mix-blend-mode: difference; /* This creates the inversion effect */
     text-align: center;
+}
+
+.about-me-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .section-heading {
@@ -158,7 +174,6 @@ header, main, footer {
 
 .about-me {
     text-align: center;
-    padding-bottom: 1rem;
 }
 
 .links {
@@ -204,16 +219,23 @@ u, a {
 }
 
 .card-title {
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: bold;
 }
 
 .card-content {
-    font-size: 0.8rem;
+    font-size: 1rem;
     padding: 0 1rem 1rem 1rem;
 }
 
 #contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.1rem;
+}
+
+.contact-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -241,4 +263,137 @@ address {
 
 .my-image {
     min-width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+}
+
+.copy {
+    color: rgb(100, 100, 100);
+    font-style: italic;
+    font-weight: 500;
+    margin: 1rem 0;
+}
+
+/* ------------ TABLET STYLES ------------ */
+/* Standard tablets and large mobile (600px and up) */
+@media (min-width: 600px) {
+    .article-container {
+        grid-template-columns: repeat(2, 1fr); /* Two columns for tablets */
+    }
+    header, main, footer {
+        max-width: 85%; /* Wider container for desktop */
+        width: 85%;
+    }
+    .intro{
+        max-width: none;
+        width: 100%;
+        align-items: flex-start;
+    }
+    .header-wrapper {
+        display: block;
+    }
+    .headshot-wrapper {
+        max-width: 250px;
+        float: left;
+        margin-bottom: 0.5rem;
+        margin-right: 1rem;
+        shape-outside: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        shape-margin: 1rem;
+    }
+    .header-wrapper + nav {
+        display: none;
+    }
+    .headshot {
+        border: none;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    }
+    .my-name {
+        bottom: initial;
+        left: initial;
+        top: 8%;
+        right: -95%;
+        font-family: "Fuggles", cursive;
+        width: fit-content;
+        font-weight: bold;
+        font-size: 5.5rem;
+    }
+    .section-heading {
+        text-align: left;
+    }
+    .about-me-wrapper {
+        display: block;
+        padding: 4rem 2rem;
+        margin: 5rem 1.5rem 0 7.5rem;
+        background-color: white;
+        border-radius: 0.5rem;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    }
+    .about-me {
+        margin-top: 0.5rem;
+        text-align: justify;
+        text-wrap: wrap;
+        line-height: 1.5;
+        font-size: 1.1rem;
+    }
+    .my-image {
+        min-width: initial;
+        width: 40%;
+        max-width: 300px;
+    }
+    #contact {
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        padding: 2rem;
+        background-color: white;
+        border-radius: 0.5rem;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    }
+}
+
+/* ------------ IPAD SPECIFIC OVERRIDES ------------ */
+/* This specifically targets iPads regardless of pixel density */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1366px)
+  and (orientation: landscape)
+  and (-webkit-min-device-pixel-ratio: 1) {
+    .article-container {
+        grid-template-columns: repeat(2, 1fr); /* Force two columns for all iPads */
+    }
+    
+}
+
+/* High-DPI iPads and iPad Pros override */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1366px)
+  and (orientation: landscape)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .article-container {
+        grid-template-columns: repeat(2, 1fr); /* Force two columns for Retina iPads */
+    }
+}
+
+/* ------------ DESKTOP STYLES ------------ */
+/* Standard desktop (1024px and up) */
+@media (min-width: 1024px) {
+    header, main, footer {
+        max-width: 90%; /* Wider container for desktop */
+    }
+    
+    .article-container {
+        grid-template-columns: repeat(3, 1fr); /* Three columns for desktop */
+    }
+}
+
+/* Large desktop and 4K+ (1600px and up) */
+@media (min-width: 1600px) {
+    header, main, footer {
+        max-width: 1400px; /* Much wider container for large screens */
+    }
+    
+    /* Optional: you could go to 4 columns for very large screens */
+    .article-container {
+        gap: 2.5rem; /* Slightly larger gap for big screens */
+    }
 }
