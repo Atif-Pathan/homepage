@@ -200,6 +200,7 @@ header, main, footer {
 i {
     transition: scale 0.1s ease;
     cursor: pointer;
+    color: black;
 }
 
 /* only add hover for desktop screens (add in media q later) */
@@ -212,11 +213,15 @@ i:active {
     scale: 0.95;
 }
 
-u, a {
-    color: rgb(0, 164, 164);
+a {
+    color: rgb(21, 132, 132);
+    text-decoration: underline;
+    font-weight: 500;
+    font-style: italic;
 }
 
 .project-card {
+    background-color: white;
     /* border: 1px solid rgb(217, 217, 217); */
     display: flex;
     flex-direction: column;
@@ -224,6 +229,9 @@ u, a {
     border-radius: 0.5rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.2) 0px 8px 16px -8px;
     overflow: hidden;
+}
+
+.project-card > img {
 }
 
 .card-row-1 {
@@ -332,7 +340,8 @@ address {
         bottom: initial;
         left: initial;
         mix-blend-mode: initial;
-        color: rgb(0, 164, 164);
+        /* color: rgb(0, 164, 164); */
+        color: rgb(21, 132, 132);
         top: 8%;
         right: -95%;
         width: fit-content;
@@ -538,8 +547,8 @@ address {
         gap: 1.6rem;
     }
     .links {
-        scale: 1.4;
-        padding-right: 0.5rem;
+        scale: 1.5;
+        padding-right: 0.7rem;
     }
     .about-me-wrapper > nav {
         right: 3.5rem;
