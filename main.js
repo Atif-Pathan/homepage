@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Calculate rotation (values between -25 and 25 degrees)
         // Use requestAnimationFrame for smoother performance
         requestAnimationFrame(() => {
-            const rotateY = (mouseX / (rect.width / 2)) * 12;
-            const rotateX = (mouseY / (rect.height / 2)) * -12;
+            const rotateY = (mouseX / (rect.width / 2)) * 15;
+            const rotateX = (mouseY / (rect.height / 2)) * -15;
             
             // Apply the rotation with CSS variables
             card.style.setProperty('--rotateX', `${rotateX}deg`);
