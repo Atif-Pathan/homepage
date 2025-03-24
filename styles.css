@@ -220,19 +220,77 @@ a {
     font-style: italic;
 }
 
+/* Base card styling without 3D transforms */
 .project-card {
     background-color: white;
-    /* border: 1px solid rgb(217, 217, 217); */
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     border-radius: 0.5rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.2) 0px 8px 16px -8px;
+}
+
+/* Only apply 3D effects on devices that support hover */
+/* Only apply 3D effects on devices that support hover */
+@media (hover: hover) {
+    .project-card {
+        --rotateX: 0deg;
+        --rotateY: 0deg;
+        transform-style: preserve-3d;
+        transform: perspective(3500px) rotateY(var(--rotateY)) rotateX(var(--rotateX));
+        transition: transform 0.3s ease-out;
+    }
+
+    /* Shadow effect - more subtle by default */
+    .project-card::before {
+        content: "";
+        position: absolute;
+        border-radius: inherit;
+        inset: 0;
+        background: black;
+        filter: blur(1.5rem);
+        opacity: 0.2;
+        transform: translateZ(-100px);
+        z-index: -1;
+        pointer-events: none;
+        transition: all 0.3s ease-out; /* Add transition for smooth change */
+    }
+
+    /* Enhanced shadow on hover */
+    .project-card:hover::before {
+        opacity: 0.25; /* Stronger shadow on hover */
+        background: linear-gradient(135deg, rgb(0, 150, 150), rgb(1, 88, 88)); /* Teal/turquoise tint */
+        filter: blur(2rem); /* Slightly larger blur for more dramatic effect */
+        transform: translateZ(-120px); /* Move shadow slightly further away */
+    }
+
+    /* Subtle highlight effect */
+    .project-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 60%, rgba(0,0,0,0.1) 100%);
+        z-index: 2;
+        opacity: 0;
+        transition: opacity 0.3s ease-out;
+        pointer-events: none;
+    }
+
+    .project-card:hover::after {
+        opacity: 1;
+    }
+}
+
+/* Make sure the top image doesn't overflow */
+.project-card > img {
+    width: 100%;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
     overflow: hidden;
 }
 
-.project-card > img {
-}
 
 .card-row-1 {
     display: flex;
